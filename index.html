@@ -313,7 +313,7 @@
   .card-inner {
     width: 100%;
     height: 100%;
-    padding: 0.30in 0.10in 0.05in 0.10in;
+    padding: 0.18in 0.10in 0.05in 0.10in;
     display: flex;
     flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
@@ -375,9 +375,7 @@
     font-weight: 400;
     color: #888888;
     line-height: 1;
-    position: absolute;
-    bottom: 0.06in;
-    left: 0.10in;
+    margin-top: 6pt;
   }
 
   /* ========== PRINT ========== */
@@ -909,7 +907,6 @@ Connie&#9;Avila&#9;&#9;Morning Gossip&#9;Oil&#9;425&#9;116"></textarea>
                 <span class="card-medium"${mediumStyle}>${escapeHtml(mediumText)}</span>
                 <span class="card-price">${escapeHtml(priceText)}</span>
               </div>
-              <div class="card-spacer"></div>
               <div class="card-number">${escapeHtml(formatNumber(d.number))}</div>
             </div>
           `;
@@ -970,7 +967,7 @@ Connie&#9;Avila&#9;&#9;Morning Gossip&#9;Oil&#9;425&#9;116"></textarea>
     const ROWS_PER = 10;
     const CARDS_PER = 30;
     const PAD_LEFT = 0.10 * 72;
-    const PAD_TOP = 0.30 * 72;
+    const PAD_TOP = 0.18 * 72;
     const PAD_BOTTOM = 0.05 * 72;
     const PAD_RIGHT = 0.10 * 72;
 
@@ -1040,13 +1037,13 @@ Connie&#9;Avila&#9;&#9;Morning Gossip&#9;Oil&#9;425&#9;116"></textarea>
           doc.text(priceText, contentRight, cursorY, { align: 'right' });
         }
 
-        // Number — 4pt light gray, bottom-left
+        // Number — 6pt gray, 6pt below medium/price line
         if (numberText) {
           doc.setFont('Helvetica', 'normal');
           doc.setFontSize(6);
           doc.setTextColor(136, 136, 136);
-          const numY = cardY + CARD_H - PAD_BOTTOM;
-          doc.text(numberText, contentX, numY);
+          cursorY += 6 + 6 * 0.85;
+          doc.text(numberText, contentX, cursorY);
         }
       }
     }
